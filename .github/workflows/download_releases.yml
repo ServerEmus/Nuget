@@ -10,15 +10,16 @@ jobs:
   download-releases:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+        contents: write
+        pull-requests: write
     strategy:
-      fail-fast: false
-      matrix:
-        prj: [
-            "Shared",
-            "DllShared",
-        ]
+        max-parallel: 1
+        fail-fast: false
+        matrix:
+            prj: [
+                "Shared",
+                "DllShared",
+            ]
     steps:
         - name: "Checkout branch"
           uses: actions/checkout@v4
