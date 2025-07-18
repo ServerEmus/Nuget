@@ -1,0 +1,40 @@
+name: Download Releases
+
+on:
+    schedule:
+    - cron:  '0 15 * * *'
+    workflow_dispatch:
+# allow manual trigger
+
+jobs:
+  download-releases:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    strategy:
+      fail-fast: false
+      matrix:
+        prj: [
+            "Shared",
+            "DllShared",
+        ]
+    steps:
+        - name: "Checkout branch"
+          uses: actions/checkout@v4
+
+        - uses: robinraju/release-downloader@v1
+          with:
+            repository: 'UplayEmus/${{ matrix.prj }}'
+            latest: true
+            fileName: "UplayEmus.${{ matrix.prj }}**.nupkg"
+        - name: Commit files
+          run: |
+                git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                git config --local user.name "github-actions[bot]"
+                git commit -a -m "Add changes"
+        - name: Push changes
+          uses: ad-m/github-push-action@master
+          with:
+            branch: ${{ github.head_ref }}
+        
