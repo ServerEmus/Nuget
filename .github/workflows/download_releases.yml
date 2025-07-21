@@ -19,6 +19,7 @@ jobs:
             prj: [
                 "Shared",
                 "DllShared",
+                "ServerShared"
             ]
     steps:
         - name: "Checkout branch"
