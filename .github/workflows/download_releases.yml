@@ -19,7 +19,9 @@ jobs:
             prj: [
                 "Shared",
                 "DllShared",
-                "ServerShared"
+                "ServerShared",
+                "UplayShared",
+                "UplayServerShared"
             ]
     steps:
         - name: "Checkout branch"
@@ -27,9 +29,9 @@ jobs:
 
         - uses: robinraju/release-downloader@v1
           with:
-            repository: 'UplayEmus/${{ matrix.prj }}'
+            repository: 'ServerEmus/${{ matrix.prj }}'
             latest: true
-            fileName: "UplayEmus.${{ matrix.prj }}**.nupkg"
+            fileName: "ServerEmus.${{ matrix.prj }}**.nupkg"
         - name: Commit files
           run: |
                 git config --local user.email "github-actions[bot]@users.noreply.github.com"
