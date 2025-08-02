@@ -31,7 +31,8 @@ jobs:
           with:
             repository: 'ServerEmus/${{ matrix.prj }}'
             latest: true
-            fileName: "ServerEmus.${{ matrix.prj }}**.nupkg"
+            fileName: "**.nupkg"
+
         - name: Commit files
           run: |
                 git config --local user.email "github-actions[bot]@users.noreply.github.com"
