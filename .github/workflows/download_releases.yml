@@ -21,7 +21,7 @@ jobs:
                 "DllShared",
                 "ServerShared",
                 "UplayShared",
-                "UplayServerShared"
+                "MiniDetour.NET"
             ]
     steps:
         - name: "Checkout branch"
