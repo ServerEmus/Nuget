@@ -21,7 +21,8 @@ jobs:
                 "DllShared",
                 "ServerShared",
                 "UplayShared",
-                "MiniDetour.NET"
+                "MiniDetour.NET",
+                "IniGenerator"
             ]
     steps:
         - name: "Checkout branch"
@@ -47,3 +48,4 @@ jobs:
                     git push origin ${{ github.head_ref }}
                 fi
         
+
